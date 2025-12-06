@@ -27,14 +27,18 @@ const HomePage = () => {
     })();
   }, []);
 
-  console.log(rooms);
-
   return (
     <div className="h-screen w-full bg-[#0f111a] flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-[#1a1d29] p-8 rounded-2xl shadow-xl">
         <h1 className="text-2xl font-bold text-white mb-6 text-center">
           Join a Chat Room
         </h1>
+
+        {errorMessage && (
+          <div className="flex items-center justify-center">
+            <p className="text-lg text-[#ff5c11] font-bold">{errorMessage}</p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
