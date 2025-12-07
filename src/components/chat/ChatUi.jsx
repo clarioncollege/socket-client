@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   ArrowBigLeft,
   ChevronLeftIcon,
@@ -10,8 +10,14 @@ import ReceiverMessageBubble from "./ReceiverMessageBubble";
 
 const ChatUi = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [messages, setMessages] = useState([]);
 
   const messagesEndRef = useRef(null);
+
+  // automatic scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="bg-slate-950 h-screen w-full flex overflow-hidden">
@@ -24,7 +30,7 @@ const ChatUi = () => {
         <div className="flex mt-4 items-center justify-between px-4 pb-4">
           {!isCollapsed && (
             <h2 className="text-lg font-semibold text-gray-300">
-              <h1>Active Users</h1>
+              Active Users
             </h2>
           )}
 
