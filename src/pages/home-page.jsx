@@ -4,15 +4,16 @@ import { getAllRooms } from "../lib/room-api";
 
 const HomePage = () => {
   const [username, setUsername] = useState("");
-  const [room, setRoom] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const [roomId, setRoomId] = useState("");
   const [rooms, setRooms] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username || !room) return;
-    navigate(`/chat?room=${room}`, { state: { username } });
+    if (!username || !roomId) return;
+    navigate(`/chat?room=${roomId}`, { state: { username, roomName } });
   };
 
   useEffect(() => {
@@ -49,17 +50,20 @@ const HomePage = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full mt-1 p-3 rounded-lg bg-[#0f111a] text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
-              required
             />
           </div>
 
           <div>
             <label className="text-gray-300 text-sm">Select Room</label>
             <select
-              value={room}
-              onChange={(e) => setRoom(e.target.value)}
+              value={roomId}
+              onChange={(e) => setRoomId(e.target.value)}
+              onClick={(event) =>
+                setRoomName(
+                  event.target.options[event.target.selectedIndex].text
+                )
+              }
               className="w-full mt-1 p-3 rounded-lg bg-[#0f111a] text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
-              required
             >
               <option value="" disabled>
                 Choose a room

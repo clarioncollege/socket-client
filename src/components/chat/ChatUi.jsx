@@ -61,9 +61,7 @@ const ChatUi = () => {
             ) : (
               <>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-white">
-                    {"User One"}
-                  </p>
+                  <p className="text-sm font-semibold text-white">User One</p>
                 </div>
               </>
             )}
@@ -85,14 +83,14 @@ const ChatUi = () => {
                 onClick={() => window.history.back()}
               >
                 <span className="text-white font-semibold">
-                  {"User One"[0].toUpperCase()}
-                  {"User One"[1].toUpperCase()}
+                  {"Football"[0].toUpperCase()}
+                  {"Football"[1].toUpperCase()}
                 </span>
               </div>
 
               <div>
                 <h2 className="text-lg font-semibold text-white">
-                  {"User One"}
+                  {"Football Club"}
                 </h2>
               </div>
             </div>
